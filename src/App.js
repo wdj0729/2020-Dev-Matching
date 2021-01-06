@@ -1,5 +1,3 @@
-// 고양이 검색하는 js로 보인다.
-
 console.log("app is running!");
 
 class App {
@@ -32,7 +30,7 @@ class App {
       data: {
         visible: false,
         image: null
-      }
+      },
     });
   }
 

@@ -1,9 +1,3 @@
-let mouseOver = true;
-
-function clickTest(event){
-  console.log($target);
-}
-
 class ImageInfo {
   $imageInfo = null;
   data = null;
@@ -23,17 +17,16 @@ class ImageInfo {
     this.data = nextData;
     this.render();
   }
-  
-  render() {
 
+  render() {
     if (this.data.visible) {
       const { name, url, temperament, origin } = this.data.image;
 
       this.$imageInfo.innerHTML = `
-        <div class="content-wrapper" id="content-wrapper">
+        <div class="content-wrapper">
           <div class="title">
             <span>${name}</span>
-            <div class="close" id="close">x</div>
+            <div class="close">x</div>
           </div>
           <img src="${url}" alt="${name}"/>        
           <div class="description">
@@ -41,33 +34,29 @@ class ImageInfo {
             <div>태생: ${origin}</div>
           </div>
         </div>`;
-      
 
 
-      
-      
       this.$imageInfo.style.display = "block";
-      
-      const close = document.getElementById("close");
-      const content = document.getElementById("content-wrapper");
-      
 
-      // X 버튼 누를 시 닫힘
-      close.addEventListener("click", () => this.$imageInfo.style.display = "none");
+      // 모달 우측의 닫기(x) 버튼 누르면 닫힘
+      const close = document.getElementsByClassName("close")[0];
+      if(close){
+        close.addEventListener("click", () => this.$imageInfo.style.display = "none");
+      }
 
-      // ESC 누를 시 닫힘
-      window.addEventListener("keydown", event => event.which == 27 ? this.$imageInfo.style.display = "none" : "");
+      // ESC 버튼 누르면 닫힘
+      document.addEventListener("keydown", (event) => 
+        event.key === "Escape" ? this.$imageInfo.style.display = "none" : "");
 
-      // 바깥 레이아웃 누를 경우 닫힘
-      content.addEventListener("mouseover", () => mouseOver = true);
-      content.addEventListener("mouseout", () => mouseOver = false);
-    
-
+      // 모달 영역 밖을 누르면 닫힘
+      document.addEventListener("click",(event) => {
+        if(event.target.style.display === "block"){
+          this.$imageInfo.style.display = "none";
+        }
+      });
 
     } else {
       this.$imageInfo.style.display = "none";
-      mouseOver = true;
-
     }
   }
 }
