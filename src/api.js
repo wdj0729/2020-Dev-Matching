@@ -3,14 +3,24 @@ const API_ENDPOINT =
 
 const api = {
   fetchCats: async(keyword) => {
-    const res = await fetch(`${API_ENDPOINT}/api/cats/search?q=${keyword}`)
-    return res.json()
+    const res = await fetch(`${API_ENDPOINT}/api/cats/search?q=${keyword}`);
+    console.log(res);
+    if(res.status === 200){
+      return res.json();
+    }else{
+      console.log(`error ${res.status} ${res.statusText}`)
+    }  
   },
 };
 
 const api2 = {
   fetchCats: async () => {
-    const res = await fetch(`${API_ENDPOINT}/api/cats/random50`)
-    return res.json()
+    const res = await fetch(`${API_ENDPOINT}/api/cats/random50`);
+    console.log(res);
+    if(res.status === 200){
+      return res.json();
+    }else{
+      console.log(`error ${res.status} ${res.statusText}`)
+    }  
   },
 };
