@@ -11,7 +11,10 @@ class App {
       $target,
       onSearch: keyword => {
         api.fetchCats(keyword).then(({ data }) => this.setState(data));
-      }
+      },
+      onRandomClick: () => {
+        api2.fetchCats().then(({ data }) => this.setState(data))
+      },
     });
 
     this.searchResult = new SearchResult({

@@ -8,3 +8,11 @@ const api = {
     );
   }
 };
+
+const api2 = {
+  fetchCats: keyword => {
+    return fetch(`${API_ENDPOINT}/api/cats/random50?q=${keyword}`).then(res =>
+      res.json()
+    );
+  }
+};
