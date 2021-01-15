@@ -31,8 +31,6 @@ class SearchResult {
       )
     .join("");
 
-    console.log(this.$searchResult.innerHTML);
-
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {

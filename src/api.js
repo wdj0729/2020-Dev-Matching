@@ -10,9 +10,7 @@ const api = {
 };
 
 const api2 = {
-  fetchCats: keyword => {
-    return fetch(`${API_ENDPOINT}/api/cats/random50?q=${keyword}`).then(res =>
-      res.json()
-    );
-  }
+  fetchCats: () => {
+    return fetch(`${API_ENDPOINT}/api/cats/random50`).then(res => res.json())
+  },
 };

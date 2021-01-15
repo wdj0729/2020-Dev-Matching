@@ -12,7 +12,6 @@ class SearchInput {
     const $randdomButton = document.createElement("button");
     this.$randdomButton = $randdomButton;
     this.$randdomButton.innerHTML = "Click Me";
-    this.$randdomButton.onclick = onRandomClick();
 
     $randdomButton.id = "btn";
     $target.appendChild($randdomButton);
@@ -22,6 +21,10 @@ class SearchInput {
         onSearch(e.target.value);
       }
     });
+
+    $randdomButton.addEventListener("click", e =>{
+      onRandomClick();
+    })
 
     console.log("SearchInput created.", this);
     
