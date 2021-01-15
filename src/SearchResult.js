@@ -3,7 +3,7 @@ class SearchResult {
   data = null;
   onClick = null;
 
-  constructor({ $target, initialData, onClick }) {
+  constructor({ $target, initialData, onClick}) {
     this.$searchResult = document.createElement("div");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
@@ -11,12 +11,13 @@ class SearchResult {
     this.data = initialData;
     this.onClick = onClick;
 
-    this.render();
+    this.$searchResult.innerHTML = "데이터 로딩중...";
   }
 
   setState(nextData) {
     this.data = nextData;
-    this.render();
+    if(this.data.length!==0) this.render();
+    else console.log("데이터 없음");
   }
 
   render() {
@@ -28,7 +29,10 @@ class SearchResult {
           </div>
         `
       )
-      .join("");
+    .join("");
+
+    console.log(this.$searchResult.innerHTML);
+
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {

@@ -22,7 +22,7 @@ class App {
           visible: true,
           image
         });
-      }
+      },
     });
 
     this.imageInfo = new ImageInfo({
@@ -36,7 +36,9 @@ class App {
 
   setState(nextData) {
     console.log(this);
+
     this.data = nextData;
     this.searchResult.setState(nextData);
   }
+
 }
