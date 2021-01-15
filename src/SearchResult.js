@@ -8,16 +8,23 @@ class SearchResult {
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
 
+    this.$searchResult.innerHTML = "데이터 로딩중...";
+
     this.data = initialData;
     this.onClick = onClick;
 
-    this.$searchResult.innerHTML = "데이터 로딩중...";
+    this.render();
   }
 
   setState(nextData) {
     this.data = nextData;
-    if(this.data.length!==0) this.render();
-    else console.log("데이터 없음");
+    if(this.data.length!==0){
+      setTimeout(() => this.render(),1000);
+      this.$searchResult.innerHTML = "데이터 로딩중...";
+    }
+    else{
+      this.$searchResult.innerHTML = "데이터 없음";
+    }
   }
 
   render() {
